@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PermissionHandlingTheme {
-                SingleRequestPermission(permission = Manifest.permission.READ_CONTACTS)
+                //SingleRequestPermission(permission = Manifest.permission.READ_CONTACTS)
                 MultipleRequestPermissions(permissions = listOf(Manifest.permission.CAMERA,Manifest.permission.READ_CONTACTS))
             }
         }

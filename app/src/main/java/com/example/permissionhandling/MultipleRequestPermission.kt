@@ -20,14 +20,17 @@ fun MultipleRequestPermissions(
     rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
 ){
     val multiplePermissionsState = rememberMultiplePermissionsState(permissions = permissions)
-    HandleRequests(multiplePermissionsState = multiplePermissionsState, deniedContent = {shouldShowRationale ->
-        PermissionDeniedContent(deniedMessage = deniedMessage, rationaleMessage = rationaleMessage, shouldShowRational = shouldShowRationale, onRequestPermission = { multiplePermissionsState.launchMultiplePermissionRequest() })
-    }, content = {
-        Content(
-            text = "PERMISSION GRANTED!",
-            showButton = false
-        ) {}
-    })
+    HandleRequests(
+        multiplePermissionsState = multiplePermissionsState,
+        deniedContent = { shouldShowRational ->
+            PermissionDeniedContent(deniedMessage = deniedMessage, rationaleMessage = rationaleMessage, shouldShowRational = shouldShowRational, onRequestPermission = { multiplePermissionsState.launchMultiplePermissionRequest() })
+        },
+        content = {
+            Content(
+                text = "PERMISSION GRANTED!",
+                showButton = false
+            ) {}
+        })
 }
 
 @OptIn(ExperimentalPermissionsApi::class)
